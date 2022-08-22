@@ -84,8 +84,8 @@ Sự khác nhau giữa `the_title()` và `get_the_title()`:
 - `the_title()` sẽ lặp lại giá trị của nó, nhưng `get_the_title()` không lặp lại và chỉ trả về giá trị. Do đó nên dùng `the_title()` trong vòng lặp và dùng `get_the_title()` hữu ich khi ở bên ngoài vòng lặp để truy suất bài viết.
 
 ### Nội dung hàm số `get_stylesheet_directory_uri()`, `get_stylesheet_directory()` và sự khác nhau giữa chúng
-`get_stylesheet_directory()`: Khi cần phải include file khác vào bên trong cấu trúc thư mục, ta cần sử dụng `get_stylesheet_directory()`. Từ style.css trong thư mục parent theme, `get_stylesheet_directory()` trỏ tới thư mục trong child theme của mình (không phải trong parent theme).
+`get_stylesheet_directory()`: Sử dùng khi cần phải include file khác vào bên trong cấu trúc thư mục. Từ style.css trong thư mục parent theme, `get_stylesheet_directory()` sẽ trỏ tới thư mục trong child theme của mình (không phải trong parent theme).
 
-`get_stylesheet_directory_uri()`: Sử dung `get_stylesheet_directory_uri()` để hiển thị hình ảnh được lưu trữ bên trong thư mục /images bên trong thư mục của child theme.
+`get_stylesheet_directory_uri()`: Sử dung để hiển thị hình ảnh được lưu trữ bên trong thư mục /images bên trong thư mục của child theme.
 
 Không như `get_stylesheet_directory()` sẽ cung cấp đường dẫn của file thì `get_stylesheet_directory_uri()` cung cấp URL, được sử dụng với các tài nguyên front-end.

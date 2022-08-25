@@ -1,8 +1,9 @@
 # **practical_standard_chapter1**
 
 ### Cấu tạo file nguồn (core file) của Wordpress
-Khi kết nối với trang web wordpress của mình bằng ftp hoặc trình quản lý tệp, ta thư mục gốc cảu trang web wordpress của mình. Một số các file và thư mục wordpress cốt lõi.
+Khi kết nối với trang web wordpress của mình bằng ftp hoặc trình quản lý tệp, ta sẽ có thư mục gốc của trang web wordpress của mình. Một số các file và thư mục wordpress cốt lõi.
 - dir wp-admin, wp-includes
+- dir wp-content (hầu hết chúng ta sẽ làm việc trong thư mục này)
 - index.php
 - wp-activate.php
 - wp-blog-header.php
@@ -23,9 +24,9 @@ Khi kết nối tới bảng nào đó có sẵn trong wordpress thì ta có th�
 
 Class $wpdb là class dùng để tương tác với database trong wordpress (cái này wordpress cung cấp sẵn để mình dùng).
 
-Wordpress cũng có một vài quy ước như khi muốn kết nối tới bàng nào đó trong wordpress thì ta cần phải gọi prefix kèm theo tên bảng, ta sẽ gọi bất kỳ lện mySql nào trong query của wordpress để trả về là một object, thông thường ta sẽ không chạy các lệnh select trong query này.
+Wordpress cũng có một vài quy ước như khi muốn kết nối tới bảng nào đó trong wordpress thì ta cần phải gọi prefix kèm theo tên bảng, ta sẽ gọi bất kỳ lên mySql nào trong query của wordpress để trả về là một object, thông thường ta sẽ không chạy các lệnh select trong query này.
 
-Ta sẽ sử dùng **$wpdb->get_results()** để làm việc này. Sau khi lấy được kết quả ta sẽ gọi hàm forEach để hiển thị kết quả vì nó trả về là Array. Một hàm khác trong class Wpdb của wordpress là get_row, hàm này sẽ trả về một row trong cơ sở dữ liệu và trả về dạng object (Sử dụng khi torng trường hợp muốn đếm dữ liệu, hoặc tìm một row thỏa mãn điều kiện trong bảng).
+Ta sẽ sử dùng **$wpdb->get_results()** để làm việc này. Sau khi lấy được kết quả ta sẽ gọi hàm forEach để hiển thị kết quả vì nó trả về là Array. Một hàm khác trong class Wpdb của wordpress là get_row, hàm này sẽ trả về một row trong cơ sở dữ liệu và trả về dạng object (Sử dụng khi trong trường hợp muốn đếm dữ liệu, hoặc tìm một row thỏa mãn điều kiện trong bảng).
 
 ### Xử lý vòng lặp (loop) cho bài post cơ bản trong Wordpress theme
 Loop là cơ chế mặc định mà WordPress sử dụng để hiển thị các bài viết thông qua một template files (index.php, archive.php, page.php …). Số lượng bài post sẽ được truy xuất bởi số lượng bài post để hiển thị trên mỗi trang được xác định trong cài đặt Reading.
@@ -34,7 +35,7 @@ Loop là cơ chế mặc định mà WordPress sử dụng để hiển thị c�
 
 Hiển thị bài viết:
 - Kiểm tra xem có bài viết hay không bằng phương thức **have_posts** của đối tượng **$wp_query**.
-- Duyệt qua từng bài viết bằng phương thức **the_post**. Phương thức này sẽ đánh dấu bài viết đã được duyệt qua và dẩy sang bài viết kế tiếp. Nếu không có **the_post**, vòng lặp sẽ vô tận với duy nhất 1 bài viết.
+- Duyệt qua từng bài viết bằng phương thức **the_post**. Phương thức này sẽ đánh dấu bài viết đã được duyệt qua và đẩy sang bài viết kế tiếp. Nếu không có **the_post**, vòng lặp sẽ vô tận với duy nhất 1 bài viết.
 - Sử dụng các tempalte tag để lấy hoặc hiển thị nội dung.
 
 ```
@@ -84,8 +85,8 @@ Sự khác nhau giữa `the_title()` và `get_the_title()`:
 - `the_title()` sẽ lặp lại giá trị của nó, nhưng `get_the_title()` không lặp lại và chỉ trả về giá trị. Do đó nên dùng `the_title()` trong vòng lặp và dùng `get_the_title()` hữu ich khi ở bên ngoài vòng lặp để truy suất bài viết.
 
 ### Nội dung hàm số `get_stylesheet_directory_uri()`, `get_stylesheet_directory()` và sự khác nhau giữa chúng
-`get_stylesheet_directory()`: Sử dùng khi cần phải include file khác vào bên trong cấu trúc thư mục. Từ style.css trong thư mục parent theme, `get_stylesheet_directory()` sẽ trỏ tới thư mục trong child theme của mình (không phải trong parent theme).
+`get_stylesheet_directory()`: sử dụng khi cần phải include file khác vào bên trong cấu trúc thư mục. Từ style.css trong thư mục parent theme, `get_stylesheet_directory()` sẽ trỏ tới thư mục trong child theme của mình (không phải trong parent theme).
 
-`get_stylesheet_directory_uri()`: Sử dung để hiển thị hình ảnh được lưu trữ bên trong thư mục /images bên trong thư mục của child theme.
+`get_stylesheet_directory_uri()`: sử dụng để hiển thị hình ảnh được lưu trữ bên trong thư mục /images bên trong thư mục của child theme.
 
 Không như `get_stylesheet_directory()` sẽ cung cấp đường dẫn của file thì `get_stylesheet_directory_uri()` cung cấp URL, được sử dụng với các tài nguyên front-end.

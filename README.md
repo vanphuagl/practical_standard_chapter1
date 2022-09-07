@@ -1,4 +1,4 @@
-# **practical_standard_chapter1**
+# **practical standard chapter1**
 
 ### Cấu tạo file nguồn (core file) của Wordpress
 Khi kết nối với trang web wordpress của mình bằng ftp hoặc trình quản lý tệp, ta sẽ có thư mục gốc của trang web wordpress của mình. Một số các file và thư mục wordpress cốt lõi.
